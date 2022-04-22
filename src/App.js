@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ToDoList from "./components/ToDoList";
+import './App.css'
+const todoData = [
+  {
+    id: 1,
+    task: 'fix',
+    completed: false,
+  },
+  {
+    id: 2,
+    task: 'unfix',
+    completed: false,
+  },
+];
 
-function App() {
+
+export default function App() {
+  const [todos, setTodos] = useState(todoData);
+  function changeTodo(newTodo) {
+    let newTodos = [];
+    for (let td of todos) {
+      if (td.id == newTodo.id) {
+        newTodos.push({ ...newTodo });
+      } else {
+        newTodos.push({ ...td });
+      }
+    }
+    setTodos(newTodos);
+  }
+  function deleteTodo(id) {
+    let newTodos = todos.filter((td) => td.id !== id);
+    setTodos(newTodos);
+  }
+  function addNewTodo() {
+    let newTodo = {
+      id: Math.random(),
+      task: '',
+      completed: false,
+    };
+    let newTodos = [...todos, newTodo];
+    setTodos(newTodos);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ToDoList
+        onTodoChanged={changeTodo}
+        todos={todos}
+        onTodoDelete={deleteTodo}
+        addNewTodo={addNewTodo}
+      />
     </div>
   );
 }
-
-export default App;

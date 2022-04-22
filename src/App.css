@@ -1,38 +1,49 @@
+body {
+  background-color: #9266ff;
+}
 .App {
-  text-align: center;
+  background-color: #3f3160;
+  min-height:500px;
+  width: 400px;
+  margin:40px auto;
+}
+.todo-list{
+  background-color: antiquewhite;
+  padding: 20px;
+  margin: 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.todo-list h3 {
+  background-color: #9266ff;
+  padding: 15px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.todo-list button{
+  margin-bottom: 20px;
+  width: 100%;
+  height:max-content;
+  font-size: 20px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.todo-list button:hover{
   color: white;
+  background-color: #9266ff;
+  opacity: 0.5;
 }
-
-.App-link {
-  color: #61dafb;
+.todo-item {
+  display: flex;
+  align-items: center;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo-item input[type="checkbox"]{
+  width: 25px;
+  height: 25px;
+}
+.todo-item input[type="text"]{
+  width: 500px;
+  height: 25px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.todo-item input[type="button"]{
+  width: 25px;
+  height: 25px;
+  margin-left:5px;
 }
